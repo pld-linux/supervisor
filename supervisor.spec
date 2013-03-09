@@ -51,7 +51,6 @@ install -d $RPM_BUILD_ROOT{/etc/logrotate.d,%{_sysconfdir}/supervisord.d,%{syste
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{systemdunitdir}/supervisord.service
 cp -p %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/supervisord.conf
 cp -p %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d/supervisor
-sed -i s'/^#!.*//' $(find $RPM_BUILD_ROOT%{py_sitescriptdir}/supervisor -type f)
 
 # not useful as a library
 %{__rm} $RPM_BUILD_ROOT%{py_sitescriptdir}/supervisor/scripts/sample_*
