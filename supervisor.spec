@@ -1,20 +1,20 @@
 # TODO
-# - use system python-medusa package
-%define		prever	a12
-%define		rel	0.1
+# - bundles modified python-medusa 0.5.5
+%define		subver	b1
+%define		rel	1
 Summary:	A System for Allowing the Control of Process State on UNIX
 Name:		supervisor
 Version:	3.0
-Release:	0.%{prever}.%{rel}
+Release:	0.%{subver}.%{rel}
 License:	ZPL v2.1 and BSD and MIT
 Group:		Base
 URL:		http://supervisord.org/
-Source0:	http://pypi.python.org/packages/source/s/supervisor/%{name}-%{version}%{prever}.tar.gz
-# Source0-md5:	eb2ea5a2c3b665ba9277d17d14584a25
+Source0:	https://pypi.python.org/packages/source/s/supervisor/%{name}-%{version}%{subver}.tar.gz
+# Source0-md5:	5a2f1bb052bb2bbfd6d69ba8b1e1dad7
 Source1:	%{name}d.service
 Source2:	%{name}d.conf
 Source3:	%{name}.logrotate
-BuildRequires:	python-devel
+BuildRequires:	python-devel >= 1:2.4
 BuildRequires:	python-setuptools
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.647
@@ -30,7 +30,7 @@ The supervisor is a client/server system that allows its users to
 control a number of processes on UNIX-like operating systems.
 
 %prep
-%setup -q -n %{name}-%{version}%{?prever}
+%setup -q -n %{name}-%{version}%{?subver}
 
 %build
 CC="%{__cc}" \
@@ -92,6 +92,7 @@ NORESTART=1
 %config(noreplace) %verify(not md5 mtime size) /etc/logrotate.d/supervisor
 %dir %attr(770,root,root) %{_localstatedir}/log/%{name}
 
+%dir %{py_sitescriptdir}/supervisor
 %{py_sitescriptdir}/supervisor/*.py[co]
 %{py_sitescriptdir}/supervisor/version.txt
 %dir %{py_sitescriptdir}/supervisor/scripts
