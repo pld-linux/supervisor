@@ -1,16 +1,15 @@
 # TODO
 # - bundles modified python-medusa 0.5.5
-%define		subver	b1
 %define		rel	1
 Summary:	A System for Allowing the Control of Process State on UNIX
 Name:		supervisor
 Version:	3.0
-Release:	0.%{subver}.%{rel}
+Release:	1
 License:	ZPL v2.1 and BSD and MIT
 Group:		Base
 URL:		http://supervisord.org/
-Source0:	https://pypi.python.org/packages/source/s/supervisor/%{name}-%{version}%{subver}.tar.gz
-# Source0-md5:	5a2f1bb052bb2bbfd6d69ba8b1e1dad7
+Source0:	https://pypi.python.org/packages/source/s/supervisor/%{name}-%{version}.tar.gz
+# Source0-md5:	94ff3cf09618c36889425a8e002cd51a
 Source1:	%{name}d.service
 Source2:	%{name}d.conf
 Source3:	%{name}.logrotate
@@ -30,7 +29,7 @@ The supervisor is a client/server system that allows its users to
 control a number of processes on UNIX-like operating systems.
 
 %prep
-%setup -q -n %{name}-%{version}%{?subver}
+%setup -q
 
 %build
 CC="%{__cc}" \
