@@ -1,10 +1,10 @@
 # TODO
 # - bundles modified python-medusa 0.5.5
-%define		rel	1
+%define		rel	2
 Summary:	A System for Allowing the Control of Process State on UNIX
 Name:		supervisor
 Version:	3.0
-Release:	1
+Release:	2
 License:	ZPL v2.1 and BSD and MIT
 Group:		Base
 URL:		http://supervisord.org/
