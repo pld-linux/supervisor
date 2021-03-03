@@ -32,19 +32,13 @@ control a number of processes on UNIX-like operating systems.
 %setup -q
 
 %build
-CC="%{__cc}" \
-CFLAGS="%{rpmcflags}" \
-%{__python} setup.py build
+%py_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/etc/logrotate.d,%{_sysconfdir}/supervisord.d,%{systemdunitdir},%{_localstatedir}/log/%{name}}
 
-%{__python} setup.py install \
-	--skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
-
+%py_install
 %py_postclean
 
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{systemdunitdir}/supervisord.service
